@@ -118,8 +118,6 @@
     transition:transform .15s;
   }
   .feature:hover{transform:translateY(-6px);}
-  .price-card,.day,.info-card,.chip,.assure .a,.signup-card{transition:transform .15s;}
-  .price-card:hover,.day:hover,.info-card:hover,.chip:hover,.assure .a:hover,.signup-card:hover{transform:translateY(-6px);}
   .feature .ico{width:62px;height:62px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;font-size:30px;}
   .feature h3{font-size:18px;font-weight:800;margin-bottom:4px;}
   .feature p{font-size:14px;color:var(--ink-soft);}
@@ -196,6 +194,30 @@
   .signup-msg.ok{display:block;background:#e3f7ef;color:#1a8a5f;border:2px solid #b9ecd6;}
   .signup-msg.err{display:block;background:#fdeaea;color:#c0392b;border:2px solid #f6c9c4;}
   @media(max-width:520px){.field-row{grid-template-columns:1fr;}}
+
+  /* ---------- 報名成功確認頁 ---------- */
+  .confirm-card{display:none;}
+  .confirm-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;margin:16px 0 22px;}
+  .confirm-summary .item{background:var(--sand);border-radius:12px;padding:10px 14px;}
+  .confirm-summary .item .k{font-size:12px;color:var(--ink-soft);font-weight:700;margin-bottom:2px;}
+  .confirm-summary .item .v{font-size:15px;font-weight:700;color:var(--ink);word-break:break-word;}
+  @media(max-width:520px){.confirm-summary{grid-template-columns:1fr;}}
+
+  .pay-box{background:linear-gradient(135deg,#fff8e6,#ffeec2);border:3px dashed var(--sun);border-radius:20px;padding:20px;margin-bottom:20px;}
+  .pay-box h4{color:var(--coral-deep);font-size:16px;margin-bottom:10px;}
+  .pay-box .row{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px dashed var(--sand-deep);font-size:15px;}
+  .pay-box .row:last-child{border-bottom:none;}
+  .pay-box .row span{color:var(--ink-soft);}
+  .pay-box .row b{color:var(--ink);text-align:right;}
+
+  .line-box{background:#eafaf0;border:2px solid #b9ecd6;border-radius:20px;padding:20px;text-align:center;}
+  .line-box .line-title{font-weight:800;color:var(--ocean-deep);font-size:16px;}
+  .line-box .line-sub{font-size:14px;color:var(--ink-soft);margin-top:4px;}
+  .line-box img{width:150px;height:150px;margin:14px auto 4px;border-radius:12px;display:block;background:#fff;padding:6px;}
+  .line-btn{display:inline-block;margin-top:10px;background:#06C755;color:#fff;font-weight:700;padding:10px 26px;border-radius:999px;}
+
+  .price-card,.day,.info-card,.chip,.assure .a,.signup-card,.pay-box,.line-box{transition:transform .15s;}
+  .price-card:hover,.day:hover,.info-card:hover,.chip:hover,.assure .a:hover,.signup-card:hover,.pay-box:hover,.line-box:hover{transform:translateY(-6px);}
 
   @media(max-width:680px){
     section{padding:48px 0;}
@@ -341,6 +363,7 @@
     <p>搶先卡位，給孩子一個難忘的海洋暑假 🐳</p>
 
     <div class="signup-card">
+     <div id="signup-form-wrap">
       <h3>📝 線上報名表</h3>
       <div class="signup-note">請填寫以下資料，我們會盡快與您聯繫確認名額。</div>
 
@@ -417,6 +440,30 @@
         <button type="submit" class="btn big signup-submit" id="signup-submit-btn">🚀 送出報名</button>
         <div class="signup-msg" id="signup-msg"></div>
       </form>
+     </div>
+
+     <div class="confirm-card" id="signup-confirm">
+      <h3>🎉 報名成功！</h3>
+      <div class="signup-note" id="confirm-note">請截圖保存以下資訊，我們會盡快與您聯繫確認名額。</div>
+
+      <div class="confirm-summary" id="confirm-summary"></div>
+
+      <div class="pay-box">
+        <h4>💳 轉帳資訊</h4>
+        <div class="row"><span>郵局代號</span><b>700</b></div>
+        <div class="row"><span>戶名</span><b>澎湖縣皇家樂活健康運動協會 許怡節</b></div>
+        <div class="row"><span>帳號</span><b>0041029-0667795</b></div>
+      </div>
+
+      <div class="line-box">
+        <div class="line-title">📱 加入皇家樂活官方 LINE</div>
+        <div class="line-sub">澎湖縣皇家樂活健康運動協會</div>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Flin.ee%2FvPda2yX" alt="皇家樂活官方 LINE QR Code" loading="lazy">
+        <div><a href="https://lin.ee/vPda2yX" target="_blank" rel="noopener" class="line-btn">加入 LINE 好友</a></div>
+      </div>
+
+      <button type="button" class="btn big" id="signup-again-btn" style="width:100%;margin-top:16px;background:var(--ocean);box-shadow:0 6px 0 var(--ocean-deep)">✏️ 再報名一筆</button>
+     </div>
     </div>
   </div>
 </section>
@@ -469,10 +516,61 @@
   const form = document.getElementById("signup-form");
   const submitBtn = document.getElementById("signup-submit-btn");
   const msgBox = document.getElementById("signup-msg");
+  const formWrap = document.getElementById("signup-form-wrap");
+  const confirmCard = document.getElementById("signup-confirm");
+  const confirmNote = document.getElementById("confirm-note");
+  const confirmSummary = document.getElementById("confirm-summary");
+  const againBtn = document.getElementById("signup-again-btn");
 
   function showMsg(text, isError) {
     msgBox.textContent = text;
     msgBox.className = "signup-msg " + (isError ? "err" : "ok");
+  }
+
+  function escapeHtml(text) {
+    return String(text)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;");
+  }
+
+  function summaryItem(label, value) {
+    return '<div class="item"><div class="k">' + escapeHtml(label) + '</div><div class="v">' + escapeHtml(value || "—") + '</div></div>';
+  }
+
+  function showConfirm(payload, duplicate) {
+    const rows = [
+      ["家長姓名", payload.parentName],
+      ["家長聯絡電話", payload.parentPhone],
+      ["小孩姓名", payload.childName],
+      ["小孩年齡", payload.childAge],
+      ["當日陪同者姓名", payload.companionName],
+      ["陪同者與小孩的關係", payload.companionRelation],
+      ["緊急聯絡人姓名", payload.emergencyName],
+      ["緊急聯絡人電話", payload.emergencyPhone]
+    ];
+
+    if (payload.allergy) rows.push(["孩子過敏或特殊狀況", payload.allergy]);
+
+    confirmSummary.innerHTML = rows.map(function (r) { return summaryItem(r[0], r[1]); }).join("");
+    confirmNote.textContent = duplicate
+      ? "提醒：偵測到可能重複報名，如非重複請忽略；請截圖保存以下資訊。"
+      : "請截圖保存以下資訊，我們會盡快與您聯繫確認名額。";
+
+    formWrap.style.display = "none";
+    confirmCard.style.display = "block";
+    confirmCard.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  againBtn.addEventListener("click", function () {
+    confirmCard.style.display = "none";
+    formWrap.style.display = "block";
+    hideMsg();
+  });
+
+  function hideMsg() {
+    msgBox.className = "signup-msg";
+    msgBox.textContent = "";
   }
 
   form.addEventListener("submit", async function (e) {
@@ -514,7 +612,8 @@
       const res = await jsonp(GOOGLE_SCRIPT_URL, payload);
 
       if (res.status === "success") {
-        showMsg("🎉 報名成功！我們會盡快與您聯繫確認名額。" + (res.duplicate ? "（提醒：偵測到可能重複報名，如非重複請忽略）" : ""), false);
+        hideMsg();
+        showConfirm(payload, res.duplicate);
         form.reset();
         relationOtherField.style.display = "none";
       } else if (res.status === "closed") {
