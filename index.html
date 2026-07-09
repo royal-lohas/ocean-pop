@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OCEAN POP! 海洋小勇士 STEAM 運動探索營 ｜ 皇家樂活</title>
+<meta name="description" content="澎湖暑假最值得期待！4-8歲海洋 STEAM 運動探索營，兩天沉浸式學習，政府補助後家長只需 NT$1,500。皇家樂活主辦。">
+<meta property="og:title" content="OCEAN POP! 海洋小勇士 STEAM 運動探索營">
+<meta property="og:description" content="澎湖 · 4-8歲 · 8/9~8/10 兩天 · 政府補助後只要 NT$1,500">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ocean:#1b8fc4;
+    --ocean-deep:#0f6ea3;
+    --ocean-light:#63c3e6;
+    --sand:#fdf5e2;
+    --sand-deep:#f6e7c4;
+    --coral:#ff7a59;
+    --coral-deep:#f2603f;
+    --sun:#ffcf3f;
+    --teal:#2bb9a6;
+    --grape:#9b7ede;
+    --ink:#2a4a5c;
+    --ink-soft:#5b7482;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"Noto Sans TC","Baloo 2",system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--sand);
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{font-family:"Baloo 2","Noto Sans TC",sans-serif;line-height:1.25;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{width:min(1040px,92vw);margin:0 auto;}
+  section{padding:64px 0;}
+
+  /* ---------- 頂部固定報名條 ---------- */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:2px solid var(--sand-deep);
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;padding:10px 0;}
+  .brand{font-family:"Baloo 2";font-weight:800;color:var(--ocean-deep);font-size:19px;letter-spacing:.5px;}
+  .brand small{display:block;font-size:11px;color:var(--ink-soft);font-weight:500;letter-spacing:1px;}
+  .btn{
+    display:inline-block;background:var(--coral);color:#fff;font-weight:700;
+    padding:11px 22px;border-radius:999px;font-size:15px;
+    box-shadow:0 4px 0 var(--coral-deep);transition:transform .1s,box-shadow .1s;
+  }
+  .btn:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--coral-deep);}
+  .btn.big{font-size:19px;padding:16px 40px;box-shadow:0 6px 0 var(--coral-deep);}
+  .btn.big:hover{box-shadow:0 3px 0 var(--coral-deep);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,207,63,.35), transparent 40%),
+      linear-gradient(180deg,#bfe9f7 0%, #8ad4ee 55%, #63c3e6 100%);
+    position:relative;padding:70px 0 90px;text-align:center;overflow:hidden;
+  }
+  .hero .wave{position:absolute;left:0;right:0;bottom:-2px;line-height:0;}
+  .badge-age{
+    display:inline-flex;align-items:center;gap:8px;background:var(--ocean-deep);color:#fff;
+    padding:8px 20px;border-radius:999px;font-weight:700;font-size:15px;margin-bottom:18px;
+    box-shadow:0 4px 12px rgba(15,110,163,.35);
+  }
+  .hero .eyebrow{color:var(--ocean-deep);font-weight:700;letter-spacing:2px;font-size:15px;margin-bottom:6px;}
+  .hero h1{font-size:clamp(38px,8vw,74px);font-weight:800;color:#fff;
+    text-shadow:0 3px 0 var(--ocean-deep),0 6px 18px rgba(0,0,0,.15);letter-spacing:1px;}
+  .hero .cn-title{font-size:clamp(30px,7vw,58px);font-weight:900;color:var(--ocean-deep);margin:2px 0 4px;
+    text-shadow:0 2px 0 rgba(255,255,255,.6);}
+  .steam{font-family:"Baloo 2";font-weight:800;letter-spacing:2px;}
+  .steam b:nth-child(1){color:#ff7a59;}.steam b:nth-child(2){color:#ffcf3f;}
+  .steam b:nth-child(3){color:#2bb9a6;}.steam b:nth-child(4){color:#9b7ede;}
+  .steam b:nth-child(5){color:#f2603f;}
+  .hero .sub{font-size:clamp(17px,3.4vw,22px);color:var(--ink);font-weight:700;margin-top:10px;}
+  .hero .slogan{color:var(--ocean-deep);font-weight:500;margin:4px 0 26px;font-size:16px;}
+  .hero .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;align-items:center;}
+  .hero .meta-quick{margin-top:18px;color:var(--ocean-deep);font-weight:700;font-size:15px;}
+  .hero .meta-quick span{display:inline-block;margin:0 8px;}
+
+  /* ---------- 價格亮點 ---------- */
+  .price{background:var(--sand);text-align:center;padding-top:20px;}
+  .price-card{
+    background:linear-gradient(135deg,#fff8e6,#ffeec2);
+    border:3px dashed var(--sun);border-radius:28px;
+    max-width:560px;margin:0 auto;padding:34px 28px;position:relative;
+    box-shadow:0 16px 40px rgba(242,96,63,.12);
+  }
+  .price-card .tag{
+    position:absolute;top:-18px;left:50%;transform:translateX(-50%);
+    background:var(--coral);color:#fff;font-weight:700;padding:7px 22px;border-radius:999px;font-size:15px;white-space:nowrap;
+    box-shadow:0 4px 0 var(--coral-deep);
+  }
+  .price-card .now{font-family:"Baloo 2";font-weight:800;color:var(--coral-deep);font-size:clamp(46px,11vw,72px);line-height:1;}
+  .price-card .now small{font-size:26px;}
+  .price-card .need{font-weight:700;color:var(--ink);font-size:18px;margin-top:6px;}
+  .price-card .old{color:var(--ink-soft);margin-top:10px;font-size:15px;}
+  .price-card .old s{opacity:.7;}
+  .price-card .old b{color:var(--teal);}
+
+  /* ---------- 特色 ---------- */
+  h2.title{text-align:center;font-size:clamp(26px,5vw,38px);font-weight:800;color:var(--ocean-deep);margin-bottom:8px;}
+  .title-sub{text-align:center;color:var(--ink-soft);margin-bottom:38px;font-weight:500;}
+  .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px;}
+  .feature{
+    background:#fff;border-radius:22px;padding:26px 18px;text-align:center;
+    box-shadow:0 8px 22px rgba(27,143,196,.08);border:2px solid var(--sand-deep);
+    transition:transform .15s;
+  }
+  .feature:hover{transform:translateY(-6px);}
+  .feature .ico{width:62px;height:62px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;font-size:30px;}
+  .feature h3{font-size:18px;font-weight:800;margin-bottom:4px;}
+  .feature p{font-size:14px;color:var(--ink-soft);}
+
+  /* ---------- 課程體驗 ---------- */
+  .courses{background:linear-gradient(180deg,var(--sand),#eaf7fc);}
+  .chips{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+  .chip{
+    background:#fff;border:2px solid var(--ocean-light);color:var(--ocean-deep);font-weight:700;
+    padding:12px 22px;border-radius:999px;font-size:16px;
+    box-shadow:0 5px 14px rgba(27,143,196,.1);
+  }
+
+  /* ---------- 課表 ---------- */
+  .days{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .day{background:#fff;border-radius:24px;padding:26px 24px;box-shadow:0 10px 28px rgba(27,143,196,.1);border:2px solid var(--sand-deep);}
+  .day.d1{border-top:8px solid var(--ocean);}
+  .day.d2{border-top:8px solid var(--teal);}
+  .day .dhead{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
+  .day .dhead h3{font-size:22px;font-weight:800;}
+  .day.d1 .dhead h3{color:var(--ocean-deep);}
+  .day.d2 .dhead h3{color:var(--teal);}
+  .day .date{font-weight:700;color:var(--ink-soft);font-size:14px;}
+  .slot{display:flex;gap:12px;padding:10px 0;border-bottom:1px dashed var(--sand-deep);}
+  .slot:last-child{border-bottom:none;}
+  .slot .t{font-family:"Baloo 2";font-weight:700;color:var(--coral-deep);font-size:14px;white-space:nowrap;min-width:96px;}
+  .slot .a{font-size:15px;font-weight:500;}
+
+  /* ---------- 安心 ---------- */
+  .assure{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+  .assure .a{background:#fff;border-radius:16px;padding:14px 24px;font-weight:700;color:var(--teal);
+    box-shadow:0 6px 16px rgba(43,185,166,.12);border:2px solid #d6f2ec;}
+
+  /* ---------- 資訊 ---------- */
+  .info{background:var(--ocean-deep);color:#fff;}
+  .info h2.title{color:#fff;}
+  .info .title-sub{color:#bfe9f7;}
+  .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;}
+  .info-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:22px;}
+  .info-card .k{font-weight:800;font-size:15px;color:var(--sun);margin-bottom:4px;}
+  .info-card .v{font-size:17px;font-weight:500;}
+
+  /* ---------- 最終報名 ---------- */
+  .final{text-align:center;background:
+      radial-gradient(circle at 50% 0%, rgba(255,207,63,.4), transparent 55%),
+      linear-gradient(180deg,#63c3e6,#1b8fc4);color:#fff;padding:72px 0;}
+  .final h2{font-size:clamp(28px,6vw,44px);font-weight:800;text-shadow:0 2px 0 var(--ocean-deep);}
+  .final p{font-size:18px;margin:10px 0 26px;font-weight:600;}
+
+  footer{background:var(--ink);color:#cdd9df;text-align:center;padding:34px 0;font-size:14px;}
+  footer b{color:#fff;font-family:"Baloo 2";font-size:16px;}
+
+  /* ---------- 報名表單 ---------- */
+  .signup-card{
+    background:#fff;border-radius:28px;max-width:640px;margin:0 auto;padding:34px 30px 30px;
+    text-align:left;box-shadow:0 20px 50px rgba(15,110,163,.25);
+  }
+  .signup-card h3{color:var(--ocean-deep);font-size:20px;font-weight:800;margin-bottom:4px;}
+  .signup-card .signup-note{color:var(--ink-soft);font-size:14px;margin-bottom:20px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-weight:700;color:var(--ink);font-size:14px;margin-bottom:6px;}
+  .field label .opt{color:var(--ink-soft);font-weight:500;font-size:12px;}
+  .field label .req{color:var(--coral-deep);}
+  .field input[type=text],.field input[type=tel],.field select,.field textarea{
+    width:100%;padding:11px 14px;border:2px solid var(--sand-deep);border-radius:12px;
+    font-family:inherit;font-size:15px;color:var(--ink);background:var(--sand);
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--ocean-light);background:#fff;}
+  .field textarea{resize:vertical;min-height:64px;}
+  .signup-submit{width:100%;border:none;cursor:pointer;margin-top:6px;}
+  .signup-submit:disabled{opacity:.6;cursor:not-allowed;}
+  .signup-msg{margin-top:16px;padding:14px 16px;border-radius:14px;font-weight:700;font-size:14px;display:none;}
+  .signup-msg.ok{display:block;background:#e3f7ef;color:#1a8a5f;border:2px solid #b9ecd6;}
+  .signup-msg.err{display:block;background:#fdeaea;color:#c0392b;border:2px solid #f6c9c4;}
+  @media(max-width:520px){.field-row{grid-template-columns:1fr;}}
+
+  @media(max-width:680px){
+    section{padding:48px 0;}
+    .days{grid-template-columns:1fr;}
+    .topbar .brand small{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- 頂部固定條 -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">皇家樂活 <small>ROYAL LOHAS</small></div>
+    <a href="#報名" class="btn">立即報名</a>
+  </div>
+</div>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="wrap">
+    <div class="badge-age">🐢 適合年齡 4–8 歲（小二以下）</div>
+    <div class="eyebrow">澎湖暑假最值得期待！</div>
+    <h1>OCEAN POP!</h1>
+    <div class="cn-title">海洋小勇士</div>
+    <div class="cn-title steam" style="font-size:clamp(26px,6vw,48px)"><b>S</b><b>T</b><b>E</b><b>A</b><b>M</b> 運動探索營</div>
+    <div class="sub">兩天沉浸式學習 × 探索 × 運動 × 創意</div>
+    <div class="slogan">給孩子一個與眾不同的暑假！</div>
+    <div class="cta-row">
+      <a href="#報名" class="btn big">🚀 立即報名．搶先卡位</a>
+    </div>
+    <div class="meta-quick">
+      <span>📅 8/9–8/10（五、六）</span>
+      <span>📍 澎湖</span>
+      <span>⏰ 每天下午 1:00–5:00</span>
+    </div>
+  </div>
+  <div class="wave">
+    <svg viewBox="0 0 1440 90" preserveAspectRatio="none" style="width:100%;height:70px"><path fill="#fdf5e2" d="M0,40 C240,90 480,0 720,35 C960,70 1200,10 1440,45 L1440,90 L0,90 Z"></path></svg>
+  </div>
+</header>
+
+<!-- 價格 -->
+<section class="price">
+  <div class="wrap">
+    <div class="price-card">
+      <div class="tag">✨ 政府補助後，家長只需 ✨</div>
+      <div class="now"><small>NT$</small> 1,500</div>
+      <div class="need">兩天完整課程 · 一次搞定</div>
+      <div class="old">原價 <s>NT$5,000</s>　｜　政府補助 <b>-NT$3,500</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- 特色 -->
+<section>
+  <div class="wrap">
+    <h2 class="title">為什麼選海洋小勇士？</h2>
+    <p class="title-sub">五大亮點，玩中學、在探索中成長 💙</p>
+    <div class="features">
+      <div class="feature"><div class="ico" style="background:#e7f5db">🧪</div><h3>全程中英雙語</h3><p>自然開口說英文</p></div>
+      <div class="feature"><div class="ico" style="background:#ffe6d9">🔬</div><h3>STEAM 科學</h3><p>動手實驗好好玩</p></div>
+      <div class="feature"><div class="ico" style="background:#d8f0f7">🐠</div><h3>海洋探索</h3><p>認識澎湖海洋生物</p></div>
+      <div class="feature"><div class="ico" style="background:#ece2fb">🏃</div><h3>體適能闖關</h3><p>培養體力與自信</p></div>
+      <div class="feature"><div class="ico" style="background:#fdeecb">🎨</div><h3>創意手作</h3><p>激發想像力</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 課程體驗 -->
+<section class="courses">
+  <div class="wrap">
+    <h2 class="title">精彩體驗課程</h2>
+    <p class="title-sub">每一堂都是孩子搶著玩的實驗與手作 🧫</p>
+    <div class="chips">
+      <div class="chip">🎨 漂浮彩繪實驗</div>
+      <div class="chip">🌈 夢幻流體彩繪</div>
+      <div class="chip">🫧 海洋史萊姆實驗</div>
+      <div class="chip">🌪️ 迷你龍捲風</div>
+      <div class="chip">💧 海底泡泡實驗</div>
+      <div class="chip">🐚 海洋生態瓶</div>
+      <div class="chip">✨ 彩虹夢幻砂瓶</div>
+    </div>
+  </div>
+</section>
+
+<!-- 課表 -->
+<section>
+  <div class="wrap">
+    <h2 class="title">兩天課程表</h2>
+    <p class="title-sub">共 8 小時，滿滿的海洋冒險 🌊</p>
+    <div class="days">
+      <div class="day d1">
+        <div class="dhead"><h3>DAY 1 · 海洋探索</h3><div class="date">8/9（五）下午 1:00–5:00</div></div>
+        <div class="slot"><div class="t">13:00–13:30</div><div class="a">🌟 報到・破冰活動</div></div>
+        <div class="slot"><div class="t">13:30–14:20</div><div class="a">🐟 海洋律動暖身・心派對</div></div>
+        <div class="slot"><div class="t">14:30–15:20</div><div class="a">🐠 海底生物百科大探索</div></div>
+        <div class="slot"><div class="t">15:30–16:20</div><div class="a">🎨 海洋生態藝術創作</div></div>
+        <div class="slot"><div class="t">16:20–17:00</div><div class="a">🔬 海洋科學探索大冒險</div></div>
+      </div>
+      <div class="day d2">
+        <div class="dhead"><h3>DAY 2 · 天氣探索</h3><div class="date">8/10（六）下午 1:00–5:00</div></div>
+        <div class="slot"><div class="t">13:00–13:30</div><div class="a">☁️ 追風體能小勇士・趣味運動遊戲</div></div>
+        <div class="slot"><div class="t">13:30–14:20</div><div class="a">📡 氣象英文播報站 × STEM 氣象探索</div></div>
+        <div class="slot"><div class="t">14:30–15:20</div><div class="a">🎤 小小氣象主播體驗秀</div></div>
+        <div class="slot"><div class="t">15:30–16:20</div><div class="a">🌊 海洋英雄任務之風浪體能大挑戰</div></div>
+        <div class="slot"><div class="t">16:20–17:00</div><div class="a">🏆 結業典禮・頒發證書・大合照</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 安心 -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2 class="title">超值安心，全部包好 💝</h2>
+    <p class="title-sub"></p>
+    <div class="assure">
+      <div class="a">✅ 含教材、手作材料</div>
+      <div class="a">✅ 保險、證書</div>
+      <div class="a">✅ 探索營禮包</div>
+    </div>
+  </div>
+</section>
+
+<!-- 資訊 -->
+<section class="info">
+  <div class="wrap">
+    <h2 class="title">活動資訊</h2>
+    <p class="title-sub">報名前先看這裡 👇</p>
+    <div class="info-grid">
+      <div class="info-card"><div class="k">招生對象</div><div class="v">4–8 歲（小二以下）</div></div>
+      <div class="info-card"><div class="k">營隊時間</div><div class="v">8/9–8/10　兩天共 8 小時<br>每天下午 1:00–5:00</div></div>
+      <div class="info-card"><div class="k">營隊地點</div><div class="v">澎湖<br>（詳細地點報名後通知）</div></div>
+      <div class="info-card"><div class="k">報名方式</div><div class="v">線上報名，名額有限<br>額滿即止</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 最終報名 -->
+<section class="final" id="報名">
+  <div class="wrap">
+    <h2>名額有限，立即報名！</h2>
+    <p>搶先卡位，給孩子一個難忘的海洋暑假 🐳</p>
+
+    <div class="signup-card">
+      <h3>📝 線上報名表</h3>
+      <div class="signup-note">請填寫以下資料，我們會盡快與您聯繫確認名額。</div>
+
+      <form id="signup-form" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="parentName">家長姓名 <span class="req">*</span></label>
+            <input type="text" id="parentName" name="parentName" required>
+          </div>
+          <div class="field">
+            <label for="parentPhone">家長聯絡電話 <span class="req">*</span></label>
+            <input type="tel" id="parentPhone" name="parentPhone" required>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="childName">小孩姓名 <span class="req">*</span></label>
+            <input type="text" id="childName" name="childName" required>
+          </div>
+          <div class="field">
+            <label for="childAge">小孩年齡 <span class="req">*</span></label>
+            <select id="childAge" name="childAge" required>
+              <option value="">請選擇</option>
+              <option value="4歲">4 歲</option>
+              <option value="5歲">5 歲</option>
+              <option value="6歲">6 歲</option>
+              <option value="7歲">7 歲</option>
+              <option value="8歲">8 歲</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="companionName">當日陪同者姓名 <span class="req">*</span></label>
+            <input type="text" id="companionName" name="companionName" required>
+          </div>
+          <div class="field">
+            <label for="companionRelation">陪同者與小孩的關係 <span class="req">*</span></label>
+            <select id="companionRelation" name="companionRelation" required>
+              <option value="爸爸" selected>爸爸</option>
+              <option value="媽媽">媽媽</option>
+              <option value="爺爺奶奶">爺爺奶奶</option>
+              <option value="外公外婆">外公外婆</option>
+              <option value="哥哥姐姐">哥哥姐姐</option>
+              <option value="阿姨舅舅">阿姨舅舅</option>
+              <option value="其他">其他（請自行填寫）</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field" id="companionRelationOtherField" style="display:none">
+          <label for="companionRelationOther">請填寫陪同者與小孩的關係</label>
+          <input type="text" id="companionRelationOther" name="companionRelationOther">
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="emergencyName">緊急聯絡人姓名 <span class="req">*</span></label>
+            <input type="text" id="emergencyName" name="emergencyName" required>
+          </div>
+          <div class="field">
+            <label for="emergencyPhone">緊急聯絡人電話 <span class="req">*</span></label>
+            <input type="tel" id="emergencyPhone" name="emergencyPhone" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="allergy">孩子過敏或特殊狀況 <span class="opt">（選填）</span></label>
+          <textarea id="allergy" name="allergy" placeholder="若無特殊狀況可不填"></textarea>
+        </div>
+
+        <button type="submit" class="btn big signup-submit" id="signup-submit-btn">🚀 送出報名</button>
+        <div class="signup-msg" id="signup-msg"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <b>皇家樂活 ROYAL LOHAS</b><br>
+  OCEAN POP! 海洋小勇士 STEAM 運動探索營<br>
+  <span style="opacity:.6">© 2026 皇家樂活．保留所有權利</span>
+</footer>
+
+<script>
+  const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzsOKExGAz9znfUDYqXX7GVhIASXNjQwt-VJIdM6ek-fVQ7bZ78ZBadV2xbB-XD1SsxsQ/exec";
+
+  const relationSelect = document.getElementById("companionRelation");
+  const relationOtherField = document.getElementById("companionRelationOtherField");
+  const relationOtherInput = document.getElementById("companionRelationOther");
+
+  relationSelect.addEventListener("change", function () {
+    const isOther = relationSelect.value === "其他";
+    relationOtherField.style.display = isOther ? "block" : "none";
+    relationOtherInput.required = isOther;
+  });
+
+  function jsonp(url, params = {}) {
+    return new Promise((resolve, reject) => {
+      const callbackName = "jsonpCallback_" + Date.now() + "_" + Math.floor(Math.random() * 100000);
+      const script = document.createElement("script");
+      const query = new URLSearchParams({ ...params, callback: callbackName });
+
+      window[callbackName] = function (data) {
+        resolve(data);
+        cleanup();
+      };
+
+      script.onerror = function () {
+        reject(new Error("JSONP request failed"));
+        cleanup();
+      };
+
+      function cleanup() {
+        delete window[callbackName];
+        if (script.parentNode) script.parentNode.removeChild(script);
+      }
+
+      script.src = url + (url.includes("?") ? "&" : "?") + query.toString();
+      document.body.appendChild(script);
+    });
+  }
+
+  const form = document.getElementById("signup-form");
+  const submitBtn = document.getElementById("signup-submit-btn");
+  const msgBox = document.getElementById("signup-msg");
+
+  function showMsg(text, isError) {
+    msgBox.textContent = text;
+    msgBox.className = "signup-msg " + (isError ? "err" : "ok");
+  }
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    if (!form.reportValidity()) return;
+
+    const relation = relationSelect.value === "其他"
+      ? relationOtherInput.value.trim()
+      : relationSelect.value;
+
+    if (relationSelect.value === "其他" && !relation) {
+      showMsg("請填寫陪同者與小孩的關係", true);
+      return;
+    }
+
+    const payload = {
+      action: "submit",
+      parentName: document.getElementById("parentName").value.trim(),
+      parentPhone: document.getElementById("parentPhone").value.trim(),
+      childName: document.getElementById("childName").value.trim(),
+      childAge: document.getElementById("childAge").value,
+      companionName: document.getElementById("companionName").value.trim(),
+      companionRelation: relation,
+      emergencyName: document.getElementById("emergencyName").value.trim(),
+      emergencyPhone: document.getElementById("emergencyPhone").value.trim(),
+      allergy: document.getElementById("allergy").value.trim()
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "送出中...";
+
+    try {
+      if (!GOOGLE_SCRIPT_URL) {
+        showMsg("測試模式：尚未串接後台，資料不會真的送出。", true);
+        return;
+      }
+
+      const res = await jsonp(GOOGLE_SCRIPT_URL, payload);
+
+      if (res.status === "success") {
+        showMsg("🎉 報名成功！我們會盡快與您聯繫確認名額。" + (res.duplicate ? "（提醒：偵測到可能重複報名，如非重複請忽略）" : ""), false);
+        form.reset();
+        relationOtherField.style.display = "none";
+      } else if (res.status === "closed") {
+        showMsg("目前尚未開放報名，請稍後再試或聯絡工作人員。", true);
+      } else {
+        showMsg(res.message || "送出失敗，請確認資料是否填寫完整。", true);
+      }
+    } catch (err) {
+      showMsg("送出失敗，請確認網路連線後再試一次。", true);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "🚀 送出報名";
+    }
+  });
+</script>
+
+</body>
+</html>
