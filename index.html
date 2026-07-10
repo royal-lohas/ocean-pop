@@ -456,11 +456,11 @@
 
         <div class="field-row">
           <div class="field">
-            <label for="companionName">當日陪同者姓名 <span class="req">*</span></label>
+            <label for="companionName">當日接送者姓名 <span class="req">*</span></label>
             <input type="text" id="companionName" name="companionName" required>
           </div>
           <div class="field">
-            <label for="companionRelation">陪同者與小孩的關係 <span class="req">*</span></label>
+            <label for="companionRelation">接送者與小孩的關係 <span class="req">*</span></label>
             <select id="companionRelation" name="companionRelation" required>
               <option value="爸爸" selected>爸爸</option>
               <option value="媽媽">媽媽</option>
@@ -474,7 +474,7 @@
         </div>
 
         <div class="field" id="companionRelationOtherField" style="display:none">
-          <label for="companionRelationOther">請填寫陪同者與小孩的關係</label>
+          <label for="companionRelationOther">請填寫接送者與小孩的關係</label>
           <input type="text" id="companionRelationOther" name="companionRelationOther">
         </div>
 
@@ -648,8 +648,8 @@
       ["小孩年齡", payload.childAge],
       ["小孩出生年月日", payload.childBirthday],
       ["小孩身分證字號", payload.childId],
-      ["當日陪同者姓名", payload.companionName],
-      ["陪同者與小孩的關係", payload.companionRelation],
+      ["當日接送者姓名", payload.companionName],
+      ["接送者與小孩的關係", payload.companionRelation],
       ["緊急聯絡人姓名", payload.emergencyName],
       ["緊急聯絡人電話", payload.emergencyPhone]
     ];
@@ -687,7 +687,7 @@
       : relationSelect.value;
 
     if (relationSelect.value === "其他" && !relation) {
-      showMsg("請填寫陪同者與小孩的關係", true);
+      showMsg("請填寫接送者與小孩的關係", true);
       return;
     }
 
