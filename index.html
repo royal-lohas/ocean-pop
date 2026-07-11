@@ -74,6 +74,12 @@
     padding:8px 20px;border-radius:999px;font-weight:700;font-size:15px;margin-bottom:18px;
     box-shadow:0 4px 12px rgba(15,110,163,.35);
   }
+  .reg-status-badge{
+    display:none;align-items:center;gap:8px;padding:9px 22px;border-radius:999px;
+    font-weight:800;font-size:15px;margin:0 auto 22px;box-shadow:0 4px 12px rgba(0,0,0,.15);
+  }
+  .reg-status-badge.open{background:var(--teal);color:#fff;}
+  .reg-status-badge.closed{background:var(--coral-deep);color:#fff;}
   .hero .eyebrow{color:var(--ocean-deep);font-weight:700;letter-spacing:2px;font-size:15px;margin-bottom:6px;}
   .hero h1{font-size:clamp(38px,8vw,74px);font-weight:800;color:#fff;
     text-shadow:0 3px 0 var(--ocean-deep),0 6px 18px rgba(0,0,0,.15);letter-spacing:1px;}
@@ -465,6 +471,7 @@
   <div class="wrap">
     <h2>名額有限，立即報名！</h2>
     <p>搶先卡位，給孩子一個難忘的海洋暑假 🐳</p>
+    <div id="reg-status-badge" class="reg-status-badge"></div>
 
     <div class="signup-card">
      <div id="signup-form-wrap">
@@ -727,6 +734,30 @@
     msgBox.className = "signup-msg";
     msgBox.textContent = "";
   }
+
+  const regStatusBadge = document.getElementById("reg-status-badge");
+
+  async function checkRegistrationStatus() {
+    if (!GOOGLE_SCRIPT_URL) return;
+
+    try {
+      const res = await jsonp(GOOGLE_SCRIPT_URL, { action: "status" });
+      const isOpen = res.status === "success" && String(res.activity.registrationStatus || "").trim() === "開放";
+
+      regStatusBadge.textContent = isOpen ? "🟢 目前開放報名中" : "🔴 報名已截止";
+      regStatusBadge.className = "reg-status-badge " + (isOpen ? "open" : "closed");
+      regStatusBadge.style.display = "inline-flex";
+
+      if (!isOpen) {
+        Array.from(form.elements).forEach(function (el) { el.disabled = true; });
+        submitBtn.textContent = "🔒 報名已截止";
+      }
+    } catch (err) {
+      // 查詢失敗就不顯示狀態，不影響表單本身運作
+    }
+  }
+
+  checkRegistrationStatus();
 
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
