@@ -559,7 +559,10 @@
 
      <div class="confirm-card" id="signup-closed" style="display:none">
       <h3>🔴 報名已截止</h3>
-      <div class="signup-note">本梯次報名已截止，感謝大家的熱情參與！<br>如有任何問題，歡迎透過官方 LINE 與我們聯繫。</div>
+      <div class="signup-note" id="closed-notice" style="white-space:pre-line;font-size:15px;line-height:1.85;text-align:left;">感謝大家熱情報名，目前名額已額滿，正在審核確認報名名單中！
+如有空位將另行公告。
+
+⚠️ 請尚未轉帳的家長，於報名後五天內完成轉帳，以保留名額，感謝您的配合！</div>
 
       <div class="line-box">
         <div class="line-title">📱 加入皇家樂活官方 LINE</div>
@@ -768,6 +771,10 @@
         // 截止：整個報名表單收起來，改顯示截止訊息卡片
         if (signupFormWrap) signupFormWrap.style.display = "none";
         if (signupClosed) signupClosed.style.display = "block";
+        // 截止公告文字可從「活動設定」試算表的「截止公告」那格編輯；有填才覆蓋預設文字
+        var notice = String(res.activity.closedNotice || "").trim();
+        var noticeEl = document.getElementById("closed-notice");
+        if (notice && noticeEl) noticeEl.textContent = notice;
       } else {
         // 開放：確保表單顯示、截止卡片隱藏（B3 改回「開放」時會自動恢復）
         if (signupFormWrap) signupFormWrap.style.display = "";
