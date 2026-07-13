@@ -557,6 +557,18 @@
       </form>
      </div>
 
+     <div class="confirm-card" id="signup-closed" style="display:none">
+      <h3>🔴 報名已截止</h3>
+      <div class="signup-note">本梯次報名已截止，感謝大家的熱情參與！<br>如有任何問題，歡迎透過官方 LINE 與我們聯繫。</div>
+
+      <div class="line-box">
+        <div class="line-title">📱 加入皇家樂活官方 LINE</div>
+        <div class="line-sub">澎湖縣皇家樂活健康運動協會</div>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Flin.ee%2FvPda2yX" alt="皇家樂活官方 LINE QR Code" loading="lazy">
+        <div><a href="https://lin.ee/vPda2yX" target="_blank" rel="noopener" class="line-btn">加入 LINE 好友</a></div>
+      </div>
+     </div>
+
      <div class="confirm-card" id="signup-confirm">
       <h3>🎉 報名成功！</h3>
       <div class="signup-note" id="confirm-note">請截圖保存以下資訊，我們會盡快與您聯繫確認名額。</div>
@@ -738,6 +750,8 @@
   }
 
   const regStatusBadge = document.getElementById("reg-status-badge");
+  const signupFormWrap = document.getElementById("signup-form-wrap");
+  const signupClosed = document.getElementById("signup-closed");
 
   async function checkRegistrationStatus() {
     if (!GOOGLE_SCRIPT_URL) return;
@@ -751,8 +765,13 @@
       regStatusBadge.style.display = "inline-flex";
 
       if (!isOpen) {
-        Array.from(form.elements).forEach(function (el) { el.disabled = true; });
-        submitBtn.textContent = "🔒 報名已截止";
+        // 截止：整個報名表單收起來，改顯示截止訊息卡片
+        if (signupFormWrap) signupFormWrap.style.display = "none";
+        if (signupClosed) signupClosed.style.display = "block";
+      } else {
+        // 開放：確保表單顯示、截止卡片隱藏（B3 改回「開放」時會自動恢復）
+        if (signupFormWrap) signupFormWrap.style.display = "";
+        if (signupClosed) signupClosed.style.display = "none";
       }
     } catch (err) {
       // 查詢失敗就不顯示狀態，不影響表單本身運作
