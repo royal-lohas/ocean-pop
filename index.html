@@ -161,6 +161,10 @@
   .slot:last-child{border-bottom:none;}
   .slot .t{font-family:"Baloo 2";font-weight:700;color:var(--coral-deep);font-size:14px;white-space:nowrap;min-width:96px;}
   .slot .a{font-size:15px;font-weight:500;}
+  /* 報到那一格特別放大、加底色，讓家長一眼看到準時報到時間 */
+  .slot.checkin{background:#fff6d9;border:2px solid var(--sun);border-radius:14px;padding:12px 14px;margin:4px 0 8px;align-items:center;}
+  .slot.checkin .t{font-size:21px;color:var(--coral-deep);min-width:118px;}
+  .slot.checkin .a{font-size:19px;font-weight:800;color:var(--ocean-deep);}
 
   /* ---------- 安心 ---------- */
   .assure{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
@@ -389,20 +393,23 @@
     <p class="title-sub">共 8 小時，滿滿的海洋冒險 🌊</p>
     <div class="days">
       <div class="day d1">
-        <div class="dhead"><h3>DAY 1 · 海洋探索</h3><div class="date">8/9（日）下午 1:00–5:00</div></div>
-        <div class="slot"><div class="t">13:00–13:30</div><div class="a">🌟 報到・破冰活動</div></div>
-        <div class="slot"><div class="t">13:30–14:20</div><div class="a">🐟 海洋律動暖身・心派對</div></div>
-        <div class="slot"><div class="t">14:30–15:20</div><div class="a">🐠 海底生物百科大探索</div></div>
-        <div class="slot"><div class="t">15:30–16:20</div><div class="a">🎨 海洋生態藝術創作</div></div>
-        <div class="slot"><div class="t">16:20–17:00</div><div class="a">🔬 海洋科學探索大冒險</div></div>
+        <div class="dhead"><h3>DAY 1 · 海洋探索</h3><div class="date">8/9（日）12:30–17:00</div></div>
+        <div class="slot checkin"><div class="t">12:30–13:00</div><div class="a">📋 報到</div></div>
+        <div class="slot"><div class="t">13:00–14:30</div><div class="a">🔤 英語課程</div></div>
+        <div class="slot"><div class="t">14:30–14:40</div><div class="a">☕ 中場休息</div></div>
+        <div class="slot"><div class="t">14:40–15:30</div><div class="a">🤸 體能活動課程</div></div>
+        <div class="slot"><div class="t">15:30–15:45</div><div class="a">🍰 下午茶點心時間</div></div>
+        <div class="slot"><div class="t">15:45–17:00</div><div class="a">🔬 科學探索大冒險</div></div>
       </div>
       <div class="day d2">
-        <div class="dhead"><h3>DAY 2 · 天氣探索</h3><div class="date">8/10（一）下午 1:00–5:00</div></div>
-        <div class="slot"><div class="t">13:00–13:30</div><div class="a">☁️ 追風體能小勇士・趣味運動遊戲</div></div>
-        <div class="slot"><div class="t">13:30–14:20</div><div class="a">📡 氣象英文播報站 × STEM 氣象探索</div></div>
-        <div class="slot"><div class="t">14:30–15:20</div><div class="a">🎤 小小氣象主播體驗秀</div></div>
-        <div class="slot"><div class="t">15:30–16:20</div><div class="a">🌊 海洋英雄任務之風浪體能大挑戰</div></div>
-        <div class="slot"><div class="t">16:20–17:00</div><div class="a">🏆 結業典禮・頒發證書・大合照</div></div>
+        <div class="dhead"><h3>DAY 2 · 天氣探索</h3><div class="date">8/10（一）12:30–17:15</div></div>
+        <div class="slot checkin"><div class="t">12:30–13:00</div><div class="a">📋 報到</div></div>
+        <div class="slot"><div class="t">13:00–14:30</div><div class="a">🔤 英文課程</div></div>
+        <div class="slot"><div class="t">14:30–14:40</div><div class="a">☕ 中場休息</div></div>
+        <div class="slot"><div class="t">14:40–15:30</div><div class="a">🤸 體能活動課程</div></div>
+        <div class="slot"><div class="t">15:30–15:45</div><div class="a">🍰 下午茶點心時間</div></div>
+        <div class="slot"><div class="t">15:45–17:00</div><div class="a">🔬 科學探索大冒險</div></div>
+        <div class="slot"><div class="t">17:00–17:15</div><div class="a">🏆 結業典禮・頒發證書・大合照</div></div>
       </div>
     </div>
   </div>
@@ -441,7 +448,7 @@
     <p class="title-sub">報名前先看這裡 👇</p>
     <div class="info-grid">
       <div class="info-card"><div class="k">招生對象</div><div class="v">4–8 歲（小二以下）</div></div>
-      <div class="info-card"><div class="k">活動時間</div><div class="v">8/9（日）–8/10（一）　兩天共 8 小時<br>每天下午 1:00–5:00</div></div>
+      <div class="info-card"><div class="k">活動時間</div><div class="v">8/9（日）–8/10（一）　兩天課程<br>每天 12:30 報到，13:00 開始上課</div></div>
       <div class="info-card"><div class="k">活動地點</div><div class="v">澎湖縣馬公市公所三樓大禮堂<br>880澎湖縣馬公市西文里永福街30號</div></div>
       <div class="info-card"><div class="k">報名方式</div><div class="v">採線上報名方式，限額 30 位<br>報名額滿截止</div></div>
     </div>
