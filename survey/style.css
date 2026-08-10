@@ -1,0 +1,236 @@
+/* ============================================================
+   🌊 Ocean Pop! 家長回饋問卷 —— 樣式 (style.css)
+   手機優先 RWD、大字體、大按鈕、海洋清爽風格
+   ============================================================ */
+
+:root {
+  --ocean:#1b8fc4;
+  --ocean-deep:#0f6ea3;
+  --ocean-light:#63c3e6;
+  --sky:#bfe9fb;
+  --sand:#fdf5e2;
+  --sand-deep:#f6e7c4;
+  --coral:#ff7a59;
+  --coral-deep:#f2603f;
+  --sun:#ffcf3f;
+  --teal:#2bb9a6;
+  --teal-deep:#199e8c;
+  --ink:#2a4a5c;
+  --ink-soft:#5b7482;
+  --white:#ffffff;
+  --shadow:0 14px 34px rgba(15,110,163,.18);
+  --shadow-sm:0 6px 16px rgba(15,110,163,.12);
+}
+
+* { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+
+html { scroll-behavior:smooth; }
+
+body {
+  font-family:"Noto Sans TC","Baloo 2",system-ui,-apple-system,sans-serif;
+  color:var(--ink);
+  font-size:17px;
+  line-height:1.7;
+  min-height:100vh;
+  background:linear-gradient(180deg,#8fd6f4 0%,#63c3e6 34%,#3ba7d6 100%);
+  background-attachment:fixed;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:22px 16px 40px;
+  position:relative;
+  overflow-x:hidden;
+}
+
+/* 背景漂浮小裝飾（少量、不干擾） */
+.bg-deco { position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0; }
+.bg-deco span { position:absolute; font-size:30px; opacity:.55; animation:float 7s ease-in-out infinite; }
+.bg-deco span:nth-child(1){ top:8%; left:8%; animation-delay:0s; }
+.bg-deco span:nth-child(2){ top:14%; right:9%; font-size:38px; animation-delay:1.2s; }
+.bg-deco span:nth-child(3){ bottom:16%; left:7%; font-size:34px; animation-delay:2.1s; }
+.bg-deco span:nth-child(4){ bottom:10%; right:8%; animation-delay:.6s; }
+@keyframes float { 0%,100%{ transform:translateY(0) rotate(-4deg);} 50%{ transform:translateY(-16px) rotate(4deg);} }
+
+.app { width:100%; max-width:560px; position:relative; z-index:1; }
+
+/* ---------- 卡片 ---------- */
+.card {
+  background:var(--white);
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  position:relative;
+}
+
+/* 卡片頂部海浪帶 */
+.wave-band { position:relative; height:14px; background:linear-gradient(90deg,var(--ocean),var(--teal)); }
+.wave-band::after {
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:14px;
+  background:var(--white);
+  -webkit-mask:radial-gradient(14px at 14px 16px, transparent 97%, #000) repeat-x;
+  mask:radial-gradient(14px at 14px 16px, transparent 97%, #000) repeat-x;
+  -webkit-mask-size:28px 16px; mask-size:28px 16px;
+}
+
+.card-body { padding:30px 24px 28px; }
+
+/* ---------- 畫面切換 ---------- */
+.screen { display:none; }
+.screen.active { display:block; animation:slidein .35s ease; }
+@keyframes slidein { from{ opacity:0; transform:translateY(14px);} to{ opacity:1; transform:translateY(0);} }
+
+/* ---------- 首頁 ---------- */
+.intro { text-align:center; }
+.intro .emoji-hero { font-size:52px; line-height:1; margin-bottom:6px; }
+.intro .brand { font-size:15px; font-weight:800; letter-spacing:1px; color:var(--teal-deep); margin-bottom:4px; }
+.intro h1 {
+  font-size:30px; font-weight:800; color:var(--ocean-deep); line-height:1.25; margin-bottom:4px;
+}
+.intro .sub { font-size:19px; font-weight:800; color:var(--coral-deep); margin-bottom:8px; }
+.intro .form-tag {
+  display:inline-block; background:var(--sand); color:var(--ink);
+  font-weight:800; font-size:15px; padding:6px 16px; border-radius:999px; margin-bottom:20px;
+}
+.intro p.lead {
+  font-size:16.5px; color:var(--ink-soft); text-align:left;
+  background:#f2fbff; border:1.5px solid var(--sky); border-radius:18px;
+  padding:16px 18px; margin-bottom:18px; white-space:pre-line;
+}
+.intro .estimate { font-size:15px; color:var(--ink-soft); margin-bottom:22px; }
+.intro .estimate b { color:var(--ocean-deep); }
+.intro .org { margin-top:22px; font-size:13.5px; color:var(--ink-soft); }
+
+/* ---------- 進度條 ---------- */
+.progress-top { margin-bottom:22px; }
+.progress-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px; }
+.progress-count { font-family:"Baloo 2"; font-weight:700; color:var(--ocean-deep); font-size:18px; }
+.progress-count .cur { color:var(--coral-deep); font-size:24px; }
+.progress-hint { font-size:13px; color:var(--ink-soft); }
+.progress-track { height:12px; background:#e6f4fb; border-radius:999px; overflow:hidden; }
+.progress-fill { height:100%; width:0; border-radius:999px; background:linear-gradient(90deg,var(--sun),var(--coral)); transition:width .35s ease; }
+
+/* ---------- 題目 ---------- */
+.q-title { font-size:23px; font-weight:800; color:var(--ink); line-height:1.4; margin-bottom:4px; }
+.q-required { color:var(--coral-deep); font-size:20px; }
+.q-subtitle { font-size:15px; color:var(--ink-soft); margin-bottom:18px; }
+.q-subtitle.only { margin-top:6px; }
+.q-body { margin-top:18px; }
+
+/* ---------- 選項卡片（單選 / 複選） ---------- */
+.opt {
+  display:flex; align-items:center; gap:14px;
+  width:100%; text-align:left;
+  background:var(--white); border:2px solid var(--sand-deep);
+  border-radius:16px; padding:16px 16px; margin-bottom:12px;
+  font-size:18px; font-weight:600; color:var(--ink);
+  cursor:pointer; transition:all .15s ease;
+  min-height:60px;
+}
+.opt:active { transform:scale(.98); }
+.opt .mark {
+  flex:0 0 auto; width:26px; height:26px; border-radius:50%;
+  border:2px solid var(--ocean-light); background:var(--white);
+  display:flex; align-items:center; justify-content:center;
+  font-size:15px; color:transparent; transition:all .15s ease;
+}
+.opt.multi .mark { border-radius:8px; }
+.opt .txt { flex:1; }
+.opt.selected {
+  background:linear-gradient(100deg,var(--ocean),var(--ocean-deep));
+  border-color:var(--ocean-deep); color:#fff;
+  box-shadow:var(--shadow-sm);
+}
+.opt.selected .mark { background:var(--sun); border-color:var(--sun); color:var(--ink); }
+
+/* ---------- 評分（星星） ---------- */
+.stars { display:flex; justify-content:center; gap:8px; margin:10px 0 6px; }
+.star {
+  font-size:46px; line-height:1; cursor:pointer; user-select:none;
+  filter:grayscale(1) opacity(.35);
+  transition:transform .12s ease, filter .12s ease;
+}
+.star.on { filter:none; transform:scale(1.08); }
+.star:active { transform:scale(1.2); }
+.stars-label { text-align:center; font-size:16px; font-weight:800; color:var(--coral-deep); min-height:24px; }
+
+/* ---------- 文字輸入 ---------- */
+.field textarea, .field input[type="text"] {
+  width:100%; font-family:inherit; font-size:17px; color:var(--ink);
+  border:2px solid var(--sand-deep); border-radius:16px; padding:14px 16px;
+  background:#fbfdff; resize:vertical; line-height:1.6;
+}
+.field textarea:focus, .field input[type="text"]:focus {
+  outline:none; border-color:var(--ocean); background:#fff;
+}
+.field textarea { min-height:130px; }
+.field .count { text-align:right; font-size:13px; color:var(--ink-soft); margin-top:6px; }
+
+/* ---------- 必填提醒 ---------- */
+.warn {
+  display:none; align-items:center; gap:8px;
+  background:#fff2ee; border:1.5px solid var(--coral);
+  color:var(--coral-deep); font-weight:700; font-size:15px;
+  border-radius:14px; padding:12px 14px; margin-top:16px;
+}
+.warn.show { display:flex; animation:shake .35s; }
+@keyframes shake { 0%,100%{transform:translateX(0);} 25%{transform:translateX(-5px);} 75%{transform:translateX(5px);} }
+
+/* ---------- 按鈕 ---------- */
+.btn {
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font-family:inherit; font-weight:800; font-size:19px;
+  border:none; border-radius:16px; cursor:pointer;
+  padding:17px 22px; min-height:60px; width:100%;
+  transition:transform .12s ease, box-shadow .12s ease, opacity .12s;
+}
+.btn:active { transform:translateY(2px); }
+.btn-primary { background:var(--coral); color:#fff; box-shadow:0 6px 0 var(--coral-deep); }
+.btn-primary:active { box-shadow:0 3px 0 var(--coral-deep); }
+.btn-ocean { background:var(--ocean); color:#fff; box-shadow:0 6px 0 var(--ocean-deep); }
+.btn-ocean:active { box-shadow:0 3px 0 var(--ocean-deep); }
+.btn-ghost { background:#eef7fc; color:var(--ocean-deep); border:2px solid var(--ocean-light); }
+.btn[disabled] { opacity:.45; cursor:not-allowed; box-shadow:none; transform:none; }
+
+.nav-row { display:flex; gap:12px; margin-top:26px; }
+.nav-row .btn { flex:1; }
+.nav-row .btn.back { flex:0 0 40%; }
+
+/* ---------- 檢查頁 ---------- */
+.review { text-align:center; }
+.review .big-emoji { font-size:50px; margin-bottom:8px; }
+.review h2 { font-size:26px; font-weight:800; color:var(--ocean-deep); margin-bottom:8px; }
+.review .msg { font-size:16.5px; color:var(--ink-soft); margin-bottom:20px; }
+.miss-list { text-align:left; margin:0 0 20px; }
+.miss-item {
+  display:flex; align-items:center; gap:10px;
+  background:#fff2ee; border:1.5px solid var(--coral);
+  border-radius:14px; padding:13px 15px; margin-bottom:10px;
+  font-weight:700; color:var(--coral-deep); font-size:16px; cursor:pointer;
+  width:100%; text-align:left;
+}
+.review .ready {
+  background:#eafaf5; border:1.5px solid var(--teal);
+  color:var(--teal-deep); font-weight:800; font-size:17px;
+  border-radius:16px; padding:16px; margin-bottom:20px;
+}
+
+/* ---------- 完成頁 ---------- */
+.done { text-align:center; padding:6px 4px; }
+.done .big-emoji { font-size:60px; margin-bottom:10px; animation:pop .5s ease; }
+@keyframes pop { from{transform:scale(.4); opacity:0;} to{transform:scale(1); opacity:1;} }
+.done h2 { font-size:27px; font-weight:800; color:var(--coral-deep); margin-bottom:14px; }
+.done p { font-size:17px; color:var(--ink); line-height:1.85; margin-bottom:10px; }
+.done .org { margin-top:20px; font-weight:800; color:var(--ocean-deep); font-size:16px; }
+
+/* ---------- 頁尾 ---------- */
+.footer { text-align:center; color:#eaf7ff; font-size:13px; margin-top:18px; text-shadow:0 1px 2px rgba(0,0,0,.12); }
+
+/* ---------- 手機微調 ---------- */
+@media (max-width:400px) {
+  body { font-size:16px; padding:16px 12px 32px; }
+  .card-body { padding:24px 18px 24px; }
+  .intro h1 { font-size:26px; }
+  .q-title { font-size:21px; }
+  .opt { font-size:17px; }
+  .star { font-size:40px; }
+}
