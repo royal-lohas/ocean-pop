@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Ocean Pop！澎湖海洋小勇士 · 家長活動回饋問卷</title>
+  <meta name="description" content="Ocean Pop！澎湖海洋小勇士 STEAM 運動探索營 — 家長活動回饋問卷。澎湖縣皇家樂活健康運動協會主辦。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 背景漂浮小裝飾 -->
+  <div class="bg-deco" aria-hidden="true">
+    <span>🌊</span><span>☀️</span><span>🐚</span><span>🐟</span>
+  </div>
+
+  <div class="app">
+    <div class="card">
+      <div class="wave-band"></div>
+
+      <!-- ① 首頁 -->
+      <section class="screen" id="screen-intro">
+        <div class="card-body">
+          <div class="intro">
+            <div class="emoji-hero">🌊</div>
+            <div class="brand" id="intro-brand">澎湖縣皇家樂活健康運動協會</div>
+            <h1 id="intro-title">Ocean Pop！澎湖海洋小勇士</h1>
+            <div class="sub" id="intro-sub">STEAM 運動探索營</div>
+            <div class="form-tag" id="intro-formtitle">家長活動回饋問卷</div>
+            <p class="lead" id="intro-lead"></p>
+            <div class="estimate">⏱️ <b id="intro-estimate-strong">約 2～3 分鐘完成</b></div>
+            <button class="btn btn-primary" id="btn-start">開始填寫 ✏️</button>
+            <div class="org">— 澎湖縣皇家樂活健康運動協會 —</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ② 作答（一題一頁，內容由 script.js 自動產生） -->
+      <section class="screen" id="screen-question">
+        <div class="card-body"></div>
+      </section>
+
+      <!-- ③ 檢查頁（由 script.js 產生） -->
+      <section class="screen" id="screen-review">
+        <div class="card-body"></div>
+      </section>
+
+      <!-- ④ 完成頁 -->
+      <section class="screen" id="screen-done">
+        <div class="card-body">
+          <div class="done">
+            <div class="big-emoji">🎉</div>
+            <h2>謝謝您的回饋！</h2>
+            <p>每一份回饋，<br>都是我們下一次活動進步的重要參考。</p>
+            <p>希望「澎湖海洋小勇士」<br>成為孩子暑假裡一段開心又特別的回憶 ❤️</p>
+            <div class="org" id="done-org">澎湖縣皇家樂活健康運動協會</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+    <div class="footer">🐚 Ocean Pop! · 澎湖海洋小勇士 STEAM 運動探索營 🐟</div>
+  </div>
+
+  <!-- 題目資料（改題目只要動這個檔） -->
+  <script src="questions.js"></script>
+  <!-- 畫面與流程邏輯 -->
+  <script src="script.js"></script>
+</body>
+</html>
